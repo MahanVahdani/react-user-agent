@@ -6,7 +6,7 @@ import UserAgentPage from "./Pages/UserAgent/UserAgent.page";
 function App() {
   return (
     <div className="App">
-      <UserAgentPage />
+      <UserAgentPage apiUrl="https://core.aqayepardakht.ir/api/user/profile/sessions" />
     </div>
   );
 }
