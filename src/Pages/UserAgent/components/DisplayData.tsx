@@ -1,33 +1,12 @@
 import React from "react";
 
 import { DisplayDataProps, Session } from "../types/UserAgentTypes";
+import { translator } from "../../../packages/Translator/translator";
+import { timeConverter } from "../../../packages/TimeConverter/timeConvertor";
+import browserExtractor from "../../../packages/BrowserExtractor/browserExtractor";
+import osExtractor from "../../../packages/OsExtractor/osExtractor";
 
 const DisplayData: React.FC<DisplayDataProps> = ({ session }) => {
-  const columns = [
-    { title: "#", key: "id" },
-    { title: "مرورگر", key: "user_agent" },
-    { title: "سیستم عامل", key: "user_agent" },
-    { title: "کشور", key: "location.country" },
-    { title: "آی پی", key: "ip_address" },
-    { title: "آخرین فعالیت", key: "login_at" },
-    { title: "حذف", key: "delete" },
-  ];
-
-  const getItemValue = (item: Session, key: string): string | JSX.Element => {
-    const keys: string[] = key.split(".");
-    let value: string = "";
-
-    if (keys.length === 0) {
-      value = "undif";
-    } else if (keys.length === 1) {
-      value = item[keys[0]];
-    } else {
-      value = item[keys[0]][keys[1]];
-    }
-
-    return value;
-  };
-
   const handleDelete = (id: number) => {
     console.log(`Delete item with ID ${id}`);
   };
@@ -37,23 +16,44 @@ const DisplayData: React.FC<DisplayDataProps> = ({ session }) => {
       <table>
         <thead>
           <tr>
-            {columns.map((column, i) => (
-              <th key={i}>{column.title}</th>
-            ))}
+            <th>#</th>
+            <th>مرورگر</th>
+            <th>سیستم عامل</th>
+            <th>کشور</th>
+            <th>آی پی</th>
+            <th>آخرین فعالیت</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          {session.map((item: Session, j) => (
-            <tr key={j}>
-              {columns.map((column, k) => (
-                <td key={k}>
-                  {column.key === "delete" ? (
-                    <button onClick={() => handleDelete(item.id)}>حذف</button>
-                  ) : (
-                    getItemValue(item, column.key)
-                  )}
-                </td>
-              ))}
+          {session.map((item: Session, i) => (
+            <tr key={i}>
+              <td>{item.id}</td>
+              <td>
+                {translator(
+                  browserExtractor(item.user_agent).name
+                    ? browserExtractor(item.user_agent).name
+                    : "other"
+                )}
+              </td>
+              <td>
+                {translator(
+                  osExtractor(item.user_agent).name
+                    ? osExtractor(item.user_agent).name
+                    : "other"
+                )}
+              </td>
+              <td>{translator(item.location.country)}</td>
+              <td>{item.ip_address}</td>
+              <td>{timeConverter(item.login_at)}</td>
+              <td>
+                <button
+                  className="delete-button"
+                  onClick={() => handleDelete(item.id)}
+                >
+                  حذف
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

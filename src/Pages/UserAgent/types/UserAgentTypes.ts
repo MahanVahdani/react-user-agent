@@ -38,3 +38,16 @@ export interface Session {
     session: Session[];
   };
 
+  
+  export interface BrowserDetails {
+    name: string;
+    version: string;
+  };
+
+  
+  export interface OsDetails {
+    name: string;
+    version: string;
+    versionName: string;
+  };
+

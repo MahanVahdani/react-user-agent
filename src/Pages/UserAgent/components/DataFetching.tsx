@@ -39,7 +39,13 @@ const DataFetching: React.FC<DataFetchingProps> = ({ apiUrl }) => {
     }
   };
 
-  return loading ? <div>Loading...</div> : <DisplayData session={data} />;
+  return loading ? (
+    <div>Loading...</div>
+  ) : (
+    <div className="table-container">
+      <DisplayData session={data} />
+    </div>
+  );
 };
 
 export default DataFetching;

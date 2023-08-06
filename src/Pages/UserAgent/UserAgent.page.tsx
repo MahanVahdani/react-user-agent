@@ -8,8 +8,7 @@ const UserAgentPage: React.FC<UserAgentProps> = ({ apiUrl }) => {
   const token = localStorage.getItem("token");
 
   return (
-    <div>
-      <h1>Data Fetching Example</h1>
+    <div style={{ padding: "20px" }}>
       {token ? (
         <DataFetching apiUrl={apiUrl} />
       ) : (
