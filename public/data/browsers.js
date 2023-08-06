@@ -1,0 +1,22 @@
+export const browsersName = [
+    { "name": "Google Chrome", "translate": "گوگل کروم" },
+    { "name": "Apple Safari", "translate": "اپل سافاری" },
+    { "name": "Microsoft Edge", "translate": "مایکروسافت اج" },
+    { "name": "Mozilla Firefox", "translate": "موزیلا فایرفاکس" },
+    { "name": "Opera", "translate": "اپرا" },
+    { "name": "Internet Explorer", "translate": "اینترنت اکسپلورر" },
+    { "name": "Samsung Internet", "translate": "سامسونگ اینترنت" },
+    { "name": "UC Browser", "translate": "یوسی براوزر" },
+    { "name": "Brave", "translate": "بریو" },
+    { "name": "Vivaldi", "translate": "ویوالدی" },
+    { "name": "Yandex Browser", "translate": "یاندکس براوزر" },
+    { "name": "Maxthon", "translate": "مکستون" },
+    { "name": "Tor Browser", "translate": "تور براوزر" },
+    { "name": "Chromium", "translate": "کرومیوم" },
+    { "name": "SeaMonkey", "translate": "سی‌مانکی" },
+    { "name": "Pale Moon", "translate": "پیل مون" },
+    { "name": "Avant Browser", "translate": "آوانت براوزر" },
+    { "name": "Midori", "translate": "میدوری" },
+    { "name": "Epic Privacy Browser", "translate": "اپیک براوزر" },
+    { "name": "Konqueror", "translate": "کونکویر" }    
+];
